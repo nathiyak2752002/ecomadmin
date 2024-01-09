@@ -1,0 +1,184 @@
+.login-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  /* To create space between the left and right columns */
+  align-items: center;
+  height: -webkit-fill-available !important;
+  background-color: #fff;
+}
+
+.box {}
+
+.left-column {
+  flex: 2;
+  background-color: #DBE7FF;
+  padding: 20px;
+  height: -webkit-fill-available !important;
+  --mask: radial-gradient(380.37px at calc(100% - 518px) 50%, #f4eeee 99%, #fef0f000 101%) 0 calc(50% - 342px)/100% 684px, radial-gradient(396.37px at calc(100% + 352px) 50%, #f2f1f100 99%, #f8f8f8 101%) calc(100% - 171px) 50%/100% 684px repeat-y;
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+}
+
+.left-content {
+  text-align: start;
+}
+
+.taskIco {
+  position: absolute;
+  font-size: 20px;
+  color: #6392E3;
+}
+
+h2 {
+  margin: 0;
+}
+
+.right-column {
+  flex: 1;
+  margin-right: 3rem;
+  /* You can leave this column empty or add content as needed. */
+}
+
+.pass1 {
+  position: absolute;
+  right: 38px;
+  bottom: 39px;
+
+}
+
+.pass {
+  position: absolute;
+  right: 38px;
+  bottom: 20px;
+}
+
+.login-form {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  // box-shadow: 0 2px 4px #fff;
+}
+
+.login-image {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  // box-shadow: 0 2px 4px #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logHead {
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+mat-label .required {
+  color: red;
+}
+
+.required-error {
+  border-color: red !important;
+}
+
+.hintalign {
+  display: flex !important;
+  justify-content: end !important;
+}
+
+.section-b {
+  margin: 10px;
+
+  .input {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #f3f3f9;
+    width: 95%;
+    line-height: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.disflex {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+}
+
+.disBut {
+  font-size: 16px;
+  border-radius: 25px;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.rotate {
+  width: 30px;
+  height: 25px;
+  animation: rotation infinite 3s linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.blob {
+  border-radius: 40% 60% 60% 40% / 70% 30% 70% 30%;
+  width: 120px;
+  height: 50px;
+  background-color: #DBE7FF;
+  background-image: linear-gradient(45deg, #CBDDFB 0%, #DBE7FF 100%);
+  box-shadow: -10vmin 10vmin 0 #DBE7FF;
+  border-top: ridge;
+  animation: morph 2s linear infinite alternate;
+}
+
+@keyframes morph {
+  0% {
+    border-radius: 40% 60% 60% 40% / 70% 30% 70% 30%;
+  }
+
+  100% {
+    border-radius: 40% 60%;
+  }
+}
+
+.text-success{
+  color: green;
+}
+.text-danger{
+  color: red;
+}
+/* Rest of your CSS styles remain unchanged */

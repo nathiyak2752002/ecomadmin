@@ -1,0 +1,632 @@
+<div class="container">
+    <div class="card" style="padding: 10px;">
+        <div class="row" style="display:flex;flex-direction: row;align-items: center;">
+
+            <div class=" col-md-4" style="display:flex ;border-right-style: inset;">
+                <mat-form-field appearance="outline" style="width: -webkit-fill-available;">
+                    <mat-label>Select Store</mat-label>
+                    <mat-select (selectionChange)="selectStore()" id="store" [(ngModel)]="selectedStore">
+                        <mat-option *ngFor="let store of storeList"
+                            [value]="store.merchant_store_id"><span>{{store.store_name}}</span></mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            
+            <div class=" col-md-4" style="display:flex ;border-right-style: inset;">
+                <mat-form-field appearance="outline" style="width: -webkit-fill-available;">
+                    <mat-label>Select Date</mat-label>
+                    <mat-select (selectionChange)="selectDate()" id="date" [(ngModel)]="selectedDate">
+                        <mat-option *ngFor="let date of dateTypeList" [value]="date.id"
+                            [disabled]="selectedCategory==4 && (date.name=='YesterDay' || date.name=='7 days' || date.name=='Custom Range') "><span>{{date.name}}</span></mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class=" col-md-3" style="display:flex ;border-right-style: inset;" *ngIf="showCustomeDate">
+                <mat-form-field>
+                    <mat-label>Enter a date range</mat-label>
+                    <mat-date-range-input [rangePicker]="picker">
+                        <input matStartDate placeholder="Start date" [(ngModel)]="startDate">
+                        <input matEndDate placeholder="End date" [(ngModel)]="endDate"
+                            (dateChange)="customeDateRage($event)">
+                    </mat-date-range-input>
+                    <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                </mat-form-field>
+
+            </div>
+            <div class=" col-md-4" style="display:flex ;border-right-style: inset;" hidden>
+                <mat-form-field appearance="outline" style="width: -webkit-fill-available;">
+                    <mat-label>Custom Range</mat-label>
+                    <mat-select (selectionChange)="selectCategory()" id="category" [(ngModel)]="selectedCategory">
+                        <mat-option *ngFor="let category of catagoryList"
+                            [value]="category.id"><span>{{category.name}}</span></mat-option>
+
+                    </mat-select>
+                    
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <!--first row card content-->
+    <div class="card" style="padding: 10px;">
+        <div class="row">
+            
+                <div class="col-md-4">
+                    <mat-card  style="padding: 60px; height:70px; font-size: medium; background-color: darkcyan; color: white; border-radius:15px;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Total Revenue</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>$1,103,240</p>
+                        </div>
+                    </div>
+                  </mat-card>
+                </div>
+               
+            
+            <div class="col-md-4">
+                <mat-card  style="padding: 60px;height:70px; font-size: medium; background-color: darkcyan; color:white; border-radius:15px;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Salons Active Today</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>31</p>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+
+
+            <div class="col-md-4">
+                <mat-card  style="padding: 60px; height:70px; font-size: medium; background-color: darkcyan; color:white ; border-radius:15px;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label >Total Expenses</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>$16,794</p>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+            
+        </div>
+    </div>
+    <!--second row card content-->
+
+
+
+
+
+
+
+    <!--card content end-->
+
+    <!--chart content-->
+            <div class="card">
+               <div class="row">
+                    <!--firstbarchart-->
+                    
+                    <div class="col-lg-4" >
+                       
+                        
+
+
+                    <div>
+                            <div class="card">
+                                 <!-- <select [(ngModel)]="selectedType" (click)="updateChart()" (ngModelChange)="updateChart()" [ngClass]="{'best-performing': selectedType === 'best', 'least-performing': selectedType === 'least'}">
+                                     <option value="best">Best Performing Salons </option>
+                                     
+                                   
+                                     <option value="least">Least Performing Salons</option>
+                                     
+                                 </select> -->
+                                 <!-- <mat-form-field appearance="outline" style="width: -webkit-fill-available;">
+                                    <!-- <mat-label>Select Date</mat-label> -->
+                                    <!-- <mat-select (selectionChange)="selectDate()" id="best" [(ngModel)]="selectedDate">
+                                        <mat-option *ngFor="let best of  performing" [value]="best.id"
+                                            [disabled]="selectedCategory==4 && (best.name=='best performing salons' || best.name=='least performing salons' ) "><span>{{best.name}}</span></mat-option>
+                                    </mat-select>
+                                </mat-form-field> --> 
+                                <div class="card custom-card">
+                                    <div class="row">
+
+                                        <div class="col-md-9">
+                                            <mat-form-field appearance="outline" style="width: -webkit-fill-available;">
+                                            
+                                                <mat-select [(ngModel)]="selectedType" (click)="updateChart()" (ngModelChange)="updateChart()"
+                                                    [ngClass]="{'best-performing': selectedType === 'best', 'least-performing': selectedType === 'least'}">
+                                                    <mat-option value="best">Best Performing Salons</mat-option>
+                                                    <mat-option value="least">Least Performing Salons</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button mat-button class="custom-button"  routerLink="/viewdashboarddetails">View all</button>
+                                        </div>
+                                          
+                                    </div>
+                                </div>
+                                
+                                
+                                
+                                <div *ngIf="selectedType === 'best'">
+                                    <canvas #bestChart width="250" height="250px" ></canvas>
+                                  </div>
+                                  <div *ngIf="selectedType === 'least'">
+                                    <canvas #leastChart width="250" height="250px" ></canvas>
+                                   </div>
+                            </div>
+                    </div>
+            </div>
+                    <!--secondbarchart-->
+                   
+                       <div class="col-lg-4">
+                        <div class="card">
+                            <div>
+                                <canvas #customersChart width="250" height="290px"></canvas>
+                              </div>
+                        </div>
+                    </div>     
+                </div>
+
+
+                    <!-- third  bar chart
+                    <div class="col-lg-4" >
+                        <div class="card">
+                        <div>
+                            <canvas #salesChart width="400" height="500"></canvas>
+                          </div>
+                        </div>
+                    </div> -->
+
+
+                    
+                    </div>
+               </div>
+       
+    
+       <!--second row-->
+       <div class="container">
+            <div class="card">
+                <div class="row">
+                   <div class="col-lg-4">
+                      <div class="card">
+                        <!-- stylist-performance.component.html -->
+                        <div class="card" style="height: 70px; margin-top: 10px;">
+                            <p style="padding: 5px; font-size: 18px; margin-top: 17px; text-align: center; color:red;">Top 5 Service Categories</p>
+                        </div>
+                        <div>
+                            <canvas id="serviceSalesDoughnutChart" width="400" height="550"></canvas>
+                        </div>
+  
+                         
+                      </div>
+                  </div>
+
+                  <div class="col-lg-4">
+                    
+                    <div class="card">
+                        <div class="card" style="height: 70px; margin-top: 10px;">
+                            <p style="padding: 5px; font-size: 18px; margin-top: 17px; text-align: center; color:red;">Top 5 Stylish performance</p>
+                        </div>
+                       <div>
+                        <canvas id="stylistPerformanceChart" width="600" height="570"></canvas>
+                        </div>
+                    </div>
+                </div>
+            
+            
+        
+       
+           
+                <div class="col-lg-4"  >
+                    <div class="card">
+                        <div class="card" style="height: 70px; margin-top: 10px;">
+                            <p style="padding: 5px; font-size: 18px; margin-top: 17px; text-align: center; color:red;">Top 5 Product Sale</p>
+                        </div>
+                       
+                        <div>
+                            <canvas id="productSalesChart" width="400" height="550"></canvas>
+                        </div>
+                            
+  
+                          
+                          
+                          
+                          
+                    </div>
+                </div>
+
+
+
+               </div>
+       </div>  
+           
+   
+  
+        
+            
+            
+     
+          
+                    
+                   
+                    
+
+
+
+
+            
+   
+
+  
+
+
+
+ 
+
+<div class="container" hidden >
+
+    <div class="card" style="padding: 10px;">
+        <div class="row" style="display:flex;flex-direction: row;align-items: center;">
+
+            <div class=" col-md-3" style="display:flex ;border-right-style: inset;">
+                <mat-form-field appearance="outline" style="width: -webkit-fill-available;">
+                    <mat-label>Select Store</mat-label>
+                    <mat-select (selectionChange)="selectStore()" id="store" [(ngModel)]="selectedStore">
+                        <mat-option *ngFor="let store of storeList"
+                            [value]="store.merchant_store_id"><span>{{store.store_name}}</span></mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class=" col-md-3" style="display:flex ;border-right-style: inset;">
+                <mat-form-field appearance="outline" style="width: -webkit-fill-available;">
+                    <mat-label>Select Category</mat-label>
+                    <mat-select (selectionChange)="selectCategory()" id="category" [(ngModel)]="selectedCategory">
+                        <mat-option *ngFor="let category of catagoryList"
+                            [value]="category.id"><span>{{category.name}}</span></mat-option>
+
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class=" col-md-3" style="display:flex ;border-right-style: inset;">
+                <mat-form-field appearance="outline" style="width: -webkit-fill-available;">
+                    <mat-label>Select Date</mat-label>
+                    <mat-select (selectionChange)="selectDate()" id="date" [(ngModel)]="selectedDate">
+                        <mat-option *ngFor="let date of dateTypeList" [value]="date.id"
+                            [disabled]="selectedCategory==4 && (date.name=='YesterDay' || date.name=='7 days' || date.name=='Custom Range') "><span>{{date.name}}</span></mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class=" col-md-3" style="display:flex ;border-right-style: inset;" *ngIf="showCustomeDate">
+                <mat-form-field>
+                    <mat-label>Enter a date range</mat-label>
+                    <mat-date-range-input [rangePicker]="picker">
+                        <input matStartDate placeholder="Start date" [(ngModel)]="startDate">
+                        <input matEndDate placeholder="End date" [(ngModel)]="endDate"
+                            (dateChange)="customeDateRage($event)">
+                    </mat-date-range-input>
+                    <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                </mat-form-field>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="card total_value" style="padding: 10px;">
+        <div class="row" style="display:flex;flex-direction: row;align-items: center;">
+            <div class=" col-md-4" style="width: 100%; border-right-style: inset;">
+                <mat-card class="shine bills_bottom1">
+                    <mat-card-header style="display: block;"><span style="float: left;">No of Bills</span>
+                        <!-- <span style="float: right;">{{billingCount}}</span> padding-bottom: 60px;-->
+                    </mat-card-header>
+                    <mat-card-content class="card1" style="
+                    background: #ea236647;padding-top: 8px;padding-bottom: 8px">
+                        <div style="display: flex;justify-content: space-between;">
+                            <img src="../../assets/charts2.png" style="width: 50px;">
+                            <span style="float: right;
+                            align-self: center;">{{billingCount}}</span>
+
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class=" col-md-4" style="width: 100%; border-right-style: inset;">
+                <mat-card class="shine bills_bottom2">
+                    <mat-card-header style="display: block;"><span style="float: left;">Total Bill Value</span>
+                        <!-- <span
+                            style="float: right;">Rs.{{totalBillValue?totalBillValue:0}}.00</span> style="padding-bottom: 60px;-->
+                    </mat-card-header>
+
+                    <mat-card-content style="background: #5bc1b787;padding-top: 8px;padding-bottom: 8px">
+                        <div style="display: flex;justify-content: space-between;">
+                            <img src="../../assets/revenue.png" style="width: 50px;">
+                            <span style="float: right;
+                            align-self: center;">Rs.{{totalBillValue?totalBillValue:0}}.00</span>
+
+                        </div>
+                    </mat-card-content>
+
+
+                </mat-card>
+            </div>
+            <div class=" col-md-4" style="width: 100%; " *ngIf="selectedCategory==1">
+                <mat-card class="shine bills_bottom3">
+                    <mat-card-header style="display: block;"><span style="float: left;">Mode Of
+                            Payment</span></mat-card-header>
+                    <mat-card-content
+                        style="padding-bottom: 0px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;background: #00ffff3d;padding-top: 10px;">
+                        <div style="display: flex;">
+                            <label style="margin-right: 9px;">CASH </label>
+                            <mat-progress-bar style="text-align: left;width: 60%;margin-right: 10px;" mode="determinate"
+                                value={{cashPercentage}}></mat-progress-bar>
+                            <span>₹{{cashPaymentAmount ?
+                                cashPaymentAmount:0}}.00</span>
+                        </div>
+                        <div style="display: flex;">
+                            <label style="margin-right: 10px;">CARD </label>
+                            <mat-progress-bar style="text-align: left;width: 60%;margin-right: 10px;" mode="determinate"
+                                value={{cardPercentage}}></mat-progress-bar>
+                            <span>₹{{cardPaymentAmount
+                                ?cardPaymentAmount:0}}.00</span>
+
+                        </div>
+                        <div style="display: flex;">
+                            <label style="margin-right: 10px;">{{'UPI' }}&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <mat-progress-bar style="text-align: left;width: 60%;margin-right: 10px;" mode="determinate"
+                                value={{upiPercentage}}></mat-progress-bar>
+                            <span>₹{{onlinePaymentAmount
+                                ?onlinePaymentAmount:0}}.00</span>
+
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+
+    </div>
+    <div class="card">
+        <div class="row" style="display:flex;flex-direction: row;align-items: center;">
+            <div class="section-b  col-md-4">
+                <input class="input m-3" type="text" name="Search" placeholder="Search..."
+                    (keyup)="applyFilter($event.target.value)">
+            </div>
+            <div class=" col-md-4" style="display:flex ;">
+                <mat-form-field appearance="outline" style="width: -webkit-fill-available;" *ngIf="selectedCategory==4">
+                    <mat-select (selectionChange)="onChangeSalesPerformance($event)" id="performance"
+                        [(ngModel)]="selectSalesPerformance">
+                        <mat-option *ngFor="let performance of salesperformanceList"
+                            [value]="performance.id"><span>{{performance.name}}</span></mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class=" col-md-4" style="display:flex ;justify-content:flex-end">
+                <!-- (click)="convert()" -->
+                <button type="button" mat-button style="background-color: red;color: white;" class="shine"
+                    (click)="convert()">
+                    <mat-icon style="color: white;" aria-hidden="false" aria-label="Example home icon"
+                        fontIcon="get_app"></mat-icon>Pdf</button>
+                <button type="button" mat-button style="background-color: green;color: white;margin-left: 10px;"
+                    class="shine" (click)="exportexcel()">
+                    <mat-icon style="color: white;" aria-hidden="false" aria-label="Example home icon"
+                        fontIcon="get_app"></mat-icon>Excel</button>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="card" *ngIf="selectedCategory==1">
+
+        <table mat-table id="1" [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+            <ng-container matColumnDef="S.no">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> S.no. </th>
+                <td mat-cell *matCellDef="let element;let i = index;">{{i+1}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Order ID">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Order ID </th>
+                <td mat-cell *matCellDef="let element"><span style="color: orange;">{{element.bill_id}}</span>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="Date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+                <td mat-cell *matCellDef="let element"><span
+                        style="color: darkblue;">{{element.created_at?(element.created_at):''}} </span></td>
+            </ng-container>
+            <ng-container matColumnDef="Customer Name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
+                <td mat-cell *matCellDef="let element"><mat-icon aria-hidden="false" aria-label="Example home icon"
+                        fontIcon="perm_identity" style="    vertical-align: middle;
+                    color: skyblue;"></mat-icon>{{element.customer_name?element.customer_name:""}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Customer Mobile Number">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer MobileNumber </th>
+                <td mat-cell *matCellDef="let element"> <span
+                        style="color: darkblue;">{{element.searchMobileNo?element.searchMobileNo:""}}</span>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="Payment Mode">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Payment Mode </th>
+                <td mat-cell *matCellDef="let element"><label style="color: #fff;
+                    background-color: #57B657;
+                    border-radius: 20px;
+                    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;">{{element.modeofpayment?element.modeofpayment:""}}</label> </td>
+            </ng-container>
+            <ng-container matColumnDef="Net Total">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Net Total </th>
+                <td mat-cell *matCellDef="let element">₹ {{element.amount?element.amount:0}}.00</td>
+            </ng-container>
+            <ng-container matColumnDef="Tax">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Tax </th>
+                <td mat-cell *matCellDef="let element">₹ {{element.CGST
+                    +element.SGST}}.00</td>
+            </ng-container>
+            <ng-container matColumnDef="Gross">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Gross </th>
+                <td mat-cell *matCellDef="let element">₹ {{element.Grandtotal ? element.Grandtotal:0}}.00</td>
+            </ng-container>
+            <ng-container matColumnDef="Action">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                <!-- routerLink="/viewreport" -->
+                <td mat-cell *matCellDef="let element" (click)="goToView(element)">
+                    <mat-icon style="color: blueviolet;" aria-hidden="false" aria-label="Example home icon"
+                        fontIcon="visibility"></mat-icon>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+
+        </table>
+        <p style="    text-align: center;
+        font-weight: bold;
+        font-size: 16px;margin-top: 10px;" *ngIf="dataSource.filteredData==0">No data available.</p>
+        <div class="mat-elevation-z8" style="text-align: center;">
+            <div class="mat-elevation-z8" style="text-align: center;">
+
+                <mat-paginator #paginatorFirst [pageSizeOptions]="[10, 50, 100]" showFirstLastButtons></mat-paginator>
+
+            </div>
+        </div>
+    </div>
+    <div class="card" *ngIf="selectedCategory==2">
+
+        <table mat-table id="2" [dataSource]="serviceSalesdataSourceList" class="mat-elevation-z8" matSort>
+            <ng-container matColumnDef="S.no">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> S.no. </th>
+                <td mat-cell *matCellDef="let element;let i = index;">{{i+1}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Service Name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Service Name </th>
+                <td mat-cell *matCellDef="let element"><span style="color: orange;">{{element.name}}</span>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="Qty Sold">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Qty Sold </th>
+                <td mat-cell *matCellDef="let element"><span style="color: darkblue;">{{element.count}} </span>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="Gross Total">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Gross Total </th>
+                <td mat-cell *matCellDef="let element">₹ {{element.totalPrice ?element.totalPrice:0}}.00 </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="serviceColumn"></tr>
+            <tr mat-row *matRowDef="let row; columns: serviceColumn;"></tr>
+
+        </table>
+        <!-- <p style="    text-align: center;
+        font-weight: bold;
+        font-size: 16px;margin-top: 10px;" *ngIf="serviceSalesdataSourceList.filteredData==0">No data available.</p> -->
+        <div class="mat-elevation-z8" style="text-align: center;">
+
+            <mat-paginator #paginatorSecond [pageSizeOptions]="[10, 50, 100]" showFirstLastButtons></mat-paginator>
+
+        </div>
+    </div>
+    <div class="card" *ngIf="selectedCategory==3">
+        <table mat-table [dataSource]="productSalesdataSourceList" class="mat-elevation-z8" matSort>
+            <ng-container matColumnDef="S.no">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> S.no. </th>
+                <td mat-cell *matCellDef="let element;let i = index;">{{i+1}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Product Name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Product Name </th>
+                <td mat-cell *matCellDef="let element"><span style="color: orange;">{{element.name}}</span>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="Quantity">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+                <td mat-cell *matCellDef="let element"><span style="color: darkblue;">{{element.entries[0].quantity}}
+                    </span></td>
+            </ng-container>
+            <ng-container matColumnDef="Total Amount">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Amount </th>
+                <td mat-cell *matCellDef="let element">₹ {{element.entries[0].totalPrice}}.00 </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="productColumn"></tr>
+            <tr mat-row *matRowDef="let row; columns: productColumn;"></tr>
+
+        </table>
+        <!-- <p style="    text-align: center;
+        font-weight: bold;
+        font-size: 16px;margin-top: 10px;" *ngIf="productSalesdataSourceList.filteredData==0">No data available.</p> -->
+        <div class="mat-elevation-z8" style="text-align: center;">
+            <mat-paginator #paginatorThird [pageSizeOptions]="[10, 50, 100]" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+    <div class="card" *ngIf="selectedCategory==4">
+        <table mat-table [dataSource]="staffSSalesdatasourceList" class="mat-elevation-z8" matSort>
+            <ng-container matColumnDef="S.no">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> S.no. </th>
+                <td mat-cell *matCellDef="let element;let i = index;">{{i+1}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Staff Name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Staff Name </th>
+                <td mat-cell *matCellDef="let element"><span style="color: orange;">{{element.serviceName}}</span>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="Service">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Service </th>
+                <td mat-cell *matCellDef="let element"><span style="color: darkblue;">₹
+                        {{element.serviceTotal?element.serviceTotal:0}}.00
+                    </span></td>
+            </ng-container>
+            <ng-container matColumnDef="Product">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Product </th>
+                <td mat-cell *matCellDef="let element">₹ {{element.productTotal?element.productTotal:0}}.00
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Total">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Total </th>
+                <td mat-cell *matCellDef="let element">₹ {{element.total?element.total:0}}.00 </td>
+            </ng-container>
+            <ng-container matColumnDef="No of clients">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> No of clients </th>
+                <td mat-cell *matCellDef="let element"> {{element.noofClients?element.noofClients:0}} </td>
+            </ng-container>
+            <ng-container matColumnDef="ABV">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ABV </th>
+                <td mat-cell *matCellDef="let element">{{element.ABV?element.ABV:0}}</td>
+            </ng-container> <ng-container matColumnDef="Service Incentive">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Service Incentive </th>
+                <td mat-cell *matCellDef="let element">₹
+                    {{element.serviceIncentive?element.serviceIncentive:0}}.00
+                </td>
+            </ng-container> <ng-container matColumnDef="Product Incentive">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Product Incentive </th>
+                <td mat-cell *matCellDef="let element">₹
+                    {{element.productIncentive?element.productIncentive:0}}.00
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="staffColumn"></tr>
+            <tr mat-row *matRowDef="let row; columns: staffColumn;"></tr>
+
+        </table>
+        <!-- <p style="    text-align: center;
+        font-weight: bold;
+        font-size: 16px;margin-top: 10px;" *ngIf="staffSSalesdatasourceList.filteredData==0">No data available.</p> -->
+        <div class="mat-elevation-z8" style="text-align: center;">
+            <mat-paginator #paginatorFour [pageSizeOptions]="[10, 50, 100]" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+
+    <br>
+
+
+</div>
+<router-outlet></router-outlet>

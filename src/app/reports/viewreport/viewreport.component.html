@@ -1,0 +1,235 @@
+<div class="container">
+    <div class="card" style="padding: 10px;" *ngIf="appointment && !isproducts">
+        <div class="row">
+            <div class="col-md-12">
+                <a mat-raised-button (click)="back()"
+                    style="float: right;background-color:#0E1F53 ;color: white;"><mat-icon>arrow_back</mat-icon>
+                    Back</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>Booking ID :</label>
+                <span style="color: darkblue;"> {{appointment.bookingId}}
+
+                </span>
+            </div>
+            <div class="col-md-6">
+                <label>Status: </label>
+                <span style="    background: green;
+                color: white;
+                padding-left: 15px;padding-right: 15px;padding-top: 6px;padding-bottom: 6px;
+
+                border-radius: 20px;">{{appointment.billing_status}}</span>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="card" style="padding: 10px;
+    background: white;
+    border-radius: 10px;" *ngIf="appointment && !isproducts">
+        <div class="row row_bottom">
+            <div class="col-md-6 label_text " style="border-right-style: inset;">
+                <label>Customer Name : </label>
+                <span>{{appointment.customerName}}</span>
+            </div>
+            <div class="col-md-6 label_text">
+                <label>Mobile Number: </label>
+                <a [href]="'tel:' + appointment.customerMobile" style="    text-decoration: none;
+                "><span style="color: blue;">{{appointment.customerMobile}} <img style="width: 25px;
+    vertical-align: bottom;" src="../../../assets/phonecall.png"></span></a>
+
+            </div>
+        </div>
+        <div class="row row_bottom">
+            <div class="col-md-6 label_text" style="border-right-style: inset;">
+                <label>Booking Type
+                    : </label>
+                <span style="    background: #0E1F53;
+                color: white;
+                padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 6px;
+    padding-bottom: 6px;border-radius: 20px;">{{appointment.type}}
+                </span>
+            </div>
+            <div class="col-md-6 label_text">
+                <label>Created on
+                    : </label>
+                <span style="color: darkblue;">{{appointment.createdAt ? (appointment.createdAt.split(" ")[0] |
+                    date:'MMM d y') + " " +
+                    (dateService.timeConvert(appointment.createdAt.split(" ")[1])) :
+                    ""}}
+                </span>
+            </div>
+        </div>
+        <div class="row row_bottom">
+            <div class="col-md-6 label_text" style="border-right-style: inset;">
+                <label>Stylist
+                    : </label>
+                <span>{{appointment.stylistName}}</span>
+            </div>
+            <div class="col-md-6 label_text">
+                <label>Slot: </label>
+                <span style="color: darkblue;"> {{appointment.bookingDate | date:'MMM d y'}}
+                    {{dateService.timeConvert(appointment.slotName)}}
+                </span>
+            </div>
+        </div>
+        <div class="row row_bottom">
+            <div class="col-md-6 label_text" style="border-right-style: inset;">
+                <label>Appointment Start
+                    : </label>
+                <span style="color: darkblue;">{{appointmentStartTime}}<mat-icon style="vertical-align: middle;
+                    font-size: 20px;">access_time</mat-icon>
+                </span>
+            </div>
+            <div class="col-md-6 label_text">
+                <label>Appointment End
+                    : </label>
+                <span style="color: darkblue;">{{appointmentEndTime}}<mat-icon style="vertical-align: middle;
+                    font-size: 20px;">access_time</mat-icon>
+                </span>
+            </div>
+        </div>
+        <div class="row row_bottom" *ngIf="appointment.cancelReason">
+            <div class="col-md-6 label_text">
+                <label>Cancel Reason
+                    : </label>
+                <span>{{appointment.cancelReason}}
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="card" style="padding: 10px;" *ngIf="isproducts">
+        <!-- <div class="row">
+            <div class="col-md-12">
+                <a mat-raised-button (click)="back()"
+                    style="float: right;background-color:#0E1F53 ;color: white;"><mat-icon>arrow_back</mat-icon>
+                    Back</a>
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col-md-6">
+                <label>Booking ID :</label>
+                <span style="color: darkblue;"> {{receiptDetails.bill_id}}
+
+                </span>
+            </div>
+            <div class="col-md-6">
+                <a mat-raised-button (click)="back()"
+                    style="float: right;background-color:#0E1F53 ;color: white;"><mat-icon>arrow_back</mat-icon>
+                    Back</a>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="card" style="padding: 10px;
+    background: white;
+    border-radius: 10px;" *ngIf="isproducts">
+        <div class="row row_bottom">
+            <div class="col-md-6 label_text " style="border-right-style: inset;">
+                <label>Customer Name : </label>
+                <span>{{receiptDetails.customer_name}}</span>
+            </div>
+            <div class="col-md-6 label_text">
+                <label>Mobile Number: </label>
+                <a [href]="'tel:' + receiptDetails.phoneno" style="    text-decoration: none;
+                "><span style="color: blue;">{{receiptDetails.phoneno}} <img style="width: 25px;
+    vertical-align: bottom;" src="../../../assets/phonecall.png"></span></a>
+
+            </div>
+        </div>
+        <div class="row row_bottom">
+            <div class="col-md-6 label_text" style="border-right-style: inset;">
+                <label>Booking Type
+                    : </label>
+                <span style="    background: #0E1F53;
+                color: white;
+                padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 6px;
+    padding-bottom: 6px;border-radius: 20px;">{{receiptDetails.type}}
+                </span>
+            </div>
+            <div class="col-md-6 label_text">
+                <label>Created on
+                    : </label>
+                <span style="color: darkblue;">{{receiptDetails.created_at |date}}
+                </span>
+            </div>
+        </div>
+
+    </div>
+    <div class="card" style="padding: 10px;" *ngIf="appointment && !isproducts">
+        <h3>Service</h3>
+        <table mat-table id="1" [dataSource]="servicedataSource" class="mat-elevation-z8" matSort>
+            <ng-container matColumnDef="S.no">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> S.no. </th>
+                <td mat-cell *matCellDef="let element;let i = index;">{{i+1}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Service">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Service </th>
+                <td mat-cell *matCellDef="let element;let i = index;">{{element.name}} </td>
+            </ng-container> <ng-container matColumnDef="Price">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+                <td mat-cell *matCellDef="let element;let i = index;">{{element.price}} </td>
+            </ng-container> <ng-container matColumnDef="Stylist">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Stylist </th>
+                <td mat-cell *matCellDef="let element;let i = index;">{{element.stylist}} </td>
+            </ng-container> <ng-container matColumnDef="Duration">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Duration </th>
+                <td mat-cell *matCellDef="let element;let i = index;">{{element.totalDuration}} </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="serviveColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: serviveColumns;"></tr>
+
+        </table>
+        <div class="mat-elevation-z8" style="text-align: center;">
+            <div class="mat-elevation-z8" style="text-align: center;">
+
+                <mat-paginator #servicepaginator [pageSizeOptions]="[10, 50, 100]" showFirstLastButtons></mat-paginator>
+
+            </div>
+        </div>
+    </div>
+    <div class="card" style="padding: 10px;">
+        <h3>Product</h3>
+        <table mat-table id="1" [dataSource]="productdataSource" class="mat-elevation-z8" matSort>
+            <ng-container matColumnDef="S.no">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> S.no. </th>
+                <td mat-cell *matCellDef="let element;let i = index;">{{i+1}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Product">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Product </th>
+                <td mat-cell *matCellDef="let element;let i = index;">{{element.product_name}} </td>
+            </ng-container> <ng-container matColumnDef="Price">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+                <td mat-cell *matCellDef="let element;let i = index;">{{element.Price}} </td>
+            </ng-container> <ng-container matColumnDef="Quantity">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+                <td mat-cell *matCellDef="let element;let i = index;">{{element.Quantity}} </td>
+            </ng-container> <ng-container matColumnDef="Discount">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Discount </th>
+                <td mat-cell *matCellDef="let element;let i = index;">{{element.discount}} </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="productColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: productColumns;"></tr>
+
+        </table>
+        <div class="mat-elevation-z8" style="text-align: center;">
+            <div class="mat-elevation-z8" style="text-align: center;">
+
+                <mat-paginator #servicepaginator [pageSizeOptions]="[10, 50, 100]" showFirstLastButtons></mat-paginator>
+
+            </div>
+        </div>
+    </div>
+</div>

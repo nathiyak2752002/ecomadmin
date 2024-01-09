@@ -1,0 +1,65 @@
+<div class="head" [ngClass]="getHeadClass()">
+    <div class="head-content">
+        <div class="head-content-left shine">
+            <!-- <h3>Bocxy Technology</h3> -->
+            <img src="../../assets/Bocxy_logo.png" style="width: 150px;">
+        </div>
+        <div class="head-content-right">
+            <!-- <div class="head-menu">
+                <div class="search-container">
+                    <div class="normal-search">
+
+                        <input [matMenuTriggerFor]="menu" type="search" class="search" name="" id=""
+                            placeholder="Customer Name/Mobile/id">
+                        <mat-icon class="search-icon">search</mat-icon>
+                    </div>
+                    <mat-menu #menu="matMenu">
+                        <ng-container *ngIf="!noData">
+                            <div *ngFor="let customer of customerList">
+                                <span mat-menu-item>{{customer.phoneNumber}} - {{customer.firstName | titlecase}}
+                                    {{customer.lastName | titlecase}}</span>
+                            </div>
+                        </ng-container>
+
+                        <div class="add-coupon" *ngIf="noData" style="padding-left: 30px;
+                        padding-right: 30px">
+                            <a>+ &nbsp;Add New Customer</a>
+                        </div>
+                    </mat-menu>
+                </div>
+                <div class="head-menu-item">
+                    <button class="head-menu-item-btn ripple">
+                        <mat-icon>notifications</mat-icon>
+                    </button>
+                </div>
+
+            </div> -->
+            <div class="head-user-avatar-container">
+                <div class="head-user-avatar" [matMenuTriggerFor]="menuPro">
+                    <img src="../../assets/images.png" alt="user" class="user-avatar">
+                    <div class="circle-indicator pulse">
+
+                    </div>
+                    <mat-menu #menuPro="matMenu">
+                        <ng-container>
+                            <div>
+                                <span mat-menu-item><mat-icon
+                                        class="iconCls">store</mat-icon>{{logDet.store_name}}</span>
+                                <span mat-menu-item><mat-icon class="iconCls">mail</mat-icon>{{logDet.email}}</span>
+                                <span mat-menu-item><mat-icon class="iconCls">call</mat-icon>{{logDet.phone_no}}</span>
+                                <span (click)="logout()" mat-menu-item><mat-icon
+                                        class="iconCls">logout</mat-icon>Logout</span>
+                            </div>
+                        </ng-container>
+
+                        <!-- <div class="add-coupon" *ngIf="noData" style="padding-left: 30px;
+                    padding-right: 30px">
+                   <a >+ &nbsp;Add New Customer</a>
+                    </div> -->
+                    </mat-menu>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

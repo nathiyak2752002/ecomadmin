@@ -1,0 +1,258 @@
+// // span {
+// //     font-size: 1.2vw;
+// // }
+
+// // .mat-table {
+// //     width: 100%;
+// //     overflow-x: auto;
+// //     /* Enable horizontal scrolling on smaller screens */
+// // }
+
+// // .mat-header-cell,
+// // .mat-cell {
+// //     text-align: left;
+// //     /* Adjust text alignment as needed */
+
+// //     /* Use vw units for responsive widths */
+// //     min-width: 100px;
+// //     max-width: 200px;
+// // }
+
+// // /* Apply different styles for screens with a max-width of 600px */
+// // @media screen and (max-width: 600px) {
+
+// //     .mat-header-cell,
+// //     .mat-cell {
+// //         /* Adjust styles for smaller screens */
+// //         min-width: auto;
+// //         max-width: none;
+// //         white-space: nowrap;
+// //         /* Prevent text wrapping */
+// //     }
+// // }
+
+// th {
+//     color: darkblue;
+// }
+
+// td {
+//     font-weight: 600;
+//     cursor: pointer !important;
+
+// }
+
+// .section-b .input {
+//     padding: 15px;
+//     border: none;
+//     border-radius: 10px;
+//     background: #f3f3f9;
+//     width: 100%;
+//     line-height: 24px;
+// }
+
+// .card {
+//     background-color: #fff;
+//     height: 90%;
+//     border-radius: 10px;
+//     // border: 1px solid #ddd;
+//     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+//     padding: 5px;
+//     text-align: center;
+//     margin: 10px;
+
+// }
+
+// .total_value {
+
+//     label,
+//     span {
+//         font-weight: 500;
+
+//     }
+
+// }
+
+// table {
+//     border-radius: 10px;
+// }
+
+// mat-paginator {
+//     border-radius: 10px;
+// }
+
+// //
+
+
+// .blink_me {
+//     animation: blinker 1s linear infinite;
+// }
+
+// @keyframes blinker {
+//     50% {
+//         opacity: 0;
+//     }
+// }
+
+// .shine {
+//     position: relative;
+//     overflow: hidden;
+
+//     &::before {
+//         background: linear-gradient(to right,
+//                 fade_out(#fff, 1) 0%,
+//                 fade_out(#fff, 0.7) 100%);
+//         content: "";
+//         display: block;
+//         height: 100%;
+//         left: -75%;
+//         position: absolute;
+//         top: 0;
+//         transform: skewX(-25deg);
+//         width: 50%;
+//         z-index: 2;
+//     }
+
+//     &:hover,
+//     &:focus {
+//         &::before {
+//             animation: shine 0.85s;
+//         }
+//     }
+
+//     @keyframes shine {
+//         100% {
+//             left: 125%;
+//         }
+//     }
+// }
+
+// .bills_bottom1 {
+//     border-bottom-style: solid;
+//     border-bottom-color: #ea2366;
+//     border-bottom-width: 10px;
+//     border-bottom-right-radius: 10px;
+//     border-bottom-left-radius: 10px;
+// }
+
+// .bills_bottom2 {
+//     border-bottom-style: solid;
+//     border-bottom-color: #5bc1b7;
+//     border-bottom-width: 10px;
+//     border-bottom-right-radius: 10px;
+//     border-bottom-left-radius: 10px;
+// }
+
+// .bills_bottom3 {
+//     border-bottom-style: solid;
+//     border-bottom-color: #00ffff;
+//     border-bottom-width: 10px;
+//     border-bottom-right-radius: 10px;
+//     border-bottom-left-radius: 10px;
+// }
+
+
+
+
+// // .progress {
+// //     border-radius: 7px;
+// //     height: 8px;
+// //     display: flex;
+// //     height: 1rem;
+// //     overflow: hidden;
+// //     line-height: 0;
+// //     font-size: 0.75rem;
+// //     background-color: #e9ecef;
+// //     border-radius: 0.25rem;
+// // }
+
+// // .progress .progress-bar {
+// //     border-radius: 7px;
+// // }
+
+// // .progress-bar {
+// //     display: flex;
+// //     flex-direction: column;
+// //     justify-content: center;
+// //     overflow: hidden;
+// //     color: #fff;
+// //     text-align: center;
+// //     white-space: nowrap;
+// //     background-color: #007bff;
+// //     transition: width 0.6s ease;
+// // }
+
+// // .bg-success {
+// //     background-color: #57B657 !important;
+// // }
+
+// .container {
+//     width: 100%;
+//     max-width: 800px; /* Adjust as needed */
+//     margin: 0 auto;
+//   }
+  
+//   .chart-container {
+//     display: block;
+//     width: 100%;
+//     height: 400px; /* Adjust as needed */
+//     margin-bottom: 20px; /* Adjust as needed */
+//   }
+  
+//   canvas {
+//     width: 100% !important;
+//     height: 100% !important;
+//   }
+  /* styles.css or styles.scss */
+.best-performing {
+    /* Add your styling for the "Best Performing" option here */
+    color: green; /* Change this to your desired style */
+  }
+  
+  .least-performing {
+    /* Add your styling for the "Least Performing" option here */
+    color: red; /* Change this to your desired style */
+  }
+  /* styles.css or styles.scss */
+.custom-dropdown {
+    /* Add your custom styling for the dropdown wrapper here */
+    position: relative;
+  }
+  
+  // .custom-dropdown select {
+  //   /* Style the select element */
+  //   height: 70px;
+  //   padding: 5px;
+  //   font-size: 18px;
+  //   border: 1px solid #3a3232;
+  //   border-radius: 5px;
+  //   appearance: none; /* Remove default arrow in some browsers */
+  //   background-color: white;
+  //   margin-top: 10px;
+    
+  //   text-align: center;
+  // }
+ 
+  
+  // /* Style the arrow inside the select */
+  // .custom-dropdown select::after {
+  //   content: '\25BC'; /* Unicode character for the down arrow */
+  //   position: absolute;
+  //   top: 50%;
+  //   right: 10px;
+  //   transform: translateY(-50%);
+  // }
+  .custom-card {
+    margin-top: 20px;
+     /* Adjust the margin-top value according to your needs */
+    padding: 20px; /* Optional: Add padding to the card */
+  }
+  
+  /* styles.scss or your component-specific stylesheet */
+.custom-button {
+   height: 55px;
+  background-color: #4caf50; /* Replace with your desired color */
+  color: #fff;
+  border-radius: 10px;
+   /* Set text color to ensure readability */
+  /* Add any additional styling as needed */
+}

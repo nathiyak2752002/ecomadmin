@@ -1,0 +1,43 @@
+/* viewdashboarddetails.component.css */
+
+/* Style the container div */
+div {
+  margin: 20px;
+}
+
+/* Style the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 16px; /* Adjust the font size as needed */
+}
+
+/* Style the table header */
+thead {
+  background-color: #f2f2f2;
+}
+
+/* Style the table header cells */
+th {
+  padding: 10px;
+  text-align: left;
+  color: #333; /* Adjust the font color as needed */
+}
+
+/* Style the table body rows */
+tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Style the table body cells */
+td {
+  padding: 10px;
+  color: #555; /* Adjust the font color as needed */
+}
+
+/* Style the h2 heading */
+h2 {
+  color: #333;
+  font-size: 24px; /* Adjust the font size as needed */
+}
