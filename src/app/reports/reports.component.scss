@@ -242,17 +242,123 @@
   //   transform: translateY(-50%);
   // }
   .custom-card {
-    margin-top: 20px;
+    margin-top: 30px;
      /* Adjust the margin-top value according to your needs */
-    padding: 20px; /* Optional: Add padding to the card */
+    padding: 15px; /* Optional: Add padding to the card */
+  }
+  .custom-card1{
+    padding: 20px;
+    height: 70px;
   }
   
   /* styles.scss or your component-specific stylesheet */
 .custom-button {
    height: 55px;
-  background-color: #4caf50; /* Replace with your desired color */
+  background-color: #3494E6; /* Replace with your desired color */
   color: #fff;
   border-radius: 10px;
    /* Set text color to ensure readability */
   /* Add any additional styling as needed */
+}
+
+ @media (max-width: 992px) {
+  .mobile-card {
+      height: auto; /* Adjust the height for smaller screens */
+  }
+}
+
+.font-size-medium {
+  font-size: medium;
+}
+
+.m-3 {
+  margin: 0.5rem; /* Adjust the default margin size for smaller screens */
+}
+
+
+@media (max-width: 576px) {
+  .mobile-card {
+      height: auto; /* Adjust the height for even smaller screens */
+  }
+  .m-3 {
+    margin: 0.5rem; /* Adjust the default margin size for smaller screens */
+}
+.p-3 {
+  padding: 0.5rem;
+}
+.margin {
+  margin: 20px; /* Adjust the margin size for smaller screens */
+}
+}
+.font-size-medium {
+  font-size: small;
+}
+
+
+
+
+
+@media (max-width: 767px) {
+  .card p {
+      font-size: 18px; /* Adjust the font size for smaller screens */
+  }
+
+  .card button {
+      margin-top: 10px; /* Adjust the margin for smaller screens */
+  }
+}
+
+
+@media (max-width: 767px) {
+  .custom-card1 p {
+      font-size: 18px;
+      margin-bottom: 5px;
+  }
+  .font-size-medium {
+    font-size: small;
+  }
+  .custom-card1 button {
+      height: 30px;
+  }
+  .m-3 {
+    margin: 1rem; /* Use your preferred default margin size */
+  }
+  .p-3 {
+    padding: 0.5rem;
+}
+  
+  /* Custom margin size */
+  .margin {
+    margin: 100px; /* Add a margin of 50px */
+  }
+}
+.font-size-medium {
+  font-size: medium;
+}
+
+.m-3 {
+  margin: 1rem; /* Default margin size */
+}
+
+@media (max-width: 576px) {
+  /* Adjust styles for smaller screens */
+  .mobile-card {
+      height: auto;
+  }
+
+  .font-size-medium {
+      font-size: small;
+  }
+
+  .m-3 {
+      margin: 0.5rem;
+  }
+
+  .p-3 {
+      padding: 0.5rem;
+  }
+
+  .margin {
+      margin: 20px;
+  }
 }

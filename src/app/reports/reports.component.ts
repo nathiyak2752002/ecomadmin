@@ -70,6 +70,7 @@ export class ReportsComponent implements AfterViewInit {
   private doughnutChart: Chart<'doughnut', number[], string> | undefined;
   
  
+  @ViewChild('appointmentsChart', { static: true }) chartCanvas: ElementRef;
   
 
   
@@ -170,6 +171,7 @@ export class ReportsComponent implements AfterViewInit {
     private datePipe: DatePipe,
     private router: Router,
     private _snackBar: MatSnackBar,
+   
     
   ) {}
    
@@ -180,17 +182,43 @@ export class ReportsComponent implements AfterViewInit {
     this.renderDoughnutChart();
     this.renderChart();
     this.createProductSalesChart();
-    
+    this.createChart();
   }
+
+  // createProductSalesChart(): void {
+  //   const ctx = document.getElementById('productSalesChart') as HTMLCanvasElement;
+  //   const productSalesChart = new Chart(ctx, {
+  //     type: 'pie',
+  //     data: {
+  //       labels: ['Product A', 'Product B', 'Product C','Product D','Product E'],
+  //       datasets: [{
+  //         data: [300, 450, 200,800,600],
+  //         backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56','#8c3e87','#1fcf22']
+  //       }]
+  //     },
+  //     options: {
+  //       responsive: true,
+  //       maintainAspectRatio: false,
+  //       plugins: {
+  //         title: {
+  //           display: true,
+  //           text: 'Product Sales'
+  //         }
+  //       }
+  //     }
+  //   });
+  // }
+  
   createProductSalesChart(): void {
     const ctx = document.getElementById('productSalesChart') as HTMLCanvasElement;
+    
     const productSalesChart = new Chart(ctx, {
       type: 'pie',
       data: {
-        labels: ['Product A', 'Product B', 'Product C','Product D','Product E'],
+        labels: ['Hair Care Products', 'Skin Care Products', 'Body Care Products', 'Makeup Products', 'Specialty Beauty Products'],
         datasets: [{
-          data: [300, 450, 200,800,600],
-          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56','#8c3e87','#1fcf22']
+          data: [500, 300, 200, 400, 150], // Replace with your actual dummy data
+          backgroundColor: ['#42B6CA', '#2D3079', '#E82264', '#8c3e87', '#1fcf22']
         }]
       },
       options: {
@@ -221,7 +249,6 @@ export class ReportsComponent implements AfterViewInit {
 
 
 
-
   renderChart() {
     const canvas = document.getElementById('stylistPerformanceChart') as HTMLCanvasElement;
     const ctx = canvas.getContext('2d');
@@ -235,12 +262,12 @@ export class ReportsComponent implements AfterViewInit {
             {
               label: 'Bill Count',
               data: this.topStylistsData.map(data => data.billCount),
-              backgroundColor: 'rgba(255, 99, 132, 0.7)',
+              backgroundColor: '#42B6CA',
             },
             {
               label: 'Sales',
               data: this.topStylistsData.map(data => data.sales),
-              backgroundColor: 'rgba(54, 162, 235, 0.7)',
+              backgroundColor: '#2D3079',
             },
           ],
         },
@@ -261,7 +288,27 @@ export class ReportsComponent implements AfterViewInit {
   }
   
 
+  createChart() {
+    const ctx = this.chartCanvas.nativeElement.getContext('2d');
+    const data = {
+      labels: ['Booked Appointments', 'Cancelled Appointments', 'Billed Appointments'],
+      datasets: [{
+        data: [10, 10, 15], // Replace these values with your actual data
+        backgroundColor: ['#2D3079', '#42B6CA', '#E82264']
+      }]
+    };
 
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false
+    };
+
+    new Chart(ctx, {
+      type: 'pie',
+      data: data,
+      options: options
+    });
+  }
 
 
 
@@ -289,7 +336,7 @@ export class ReportsComponent implements AfterViewInit {
       scales: {
         y: {
           beginAtZero: true,
-          max: 100,
+          max: 50000,
         },
       },
     };
@@ -308,7 +355,7 @@ export class ReportsComponent implements AfterViewInit {
       scales: {
         y: {
           beginAtZero: true,
-          max: 100,
+          max: 50000,
         },
       },
     };
@@ -322,9 +369,9 @@ export class ReportsComponent implements AfterViewInit {
 
   getData(isBest: boolean) {
     const labels = isBest ? ['mck-kilpauk', 'Mck-perambur', 'Mck-royapuram', 'Mck-vadapalani', 'Mck-Ashok pillar']:['Mck-Ashok pillar','Mck-vadapalani','Mck-royapuram','Mck-perambur','mck-kilpauk'];
-    const performanceData = isBest ? [90, 85, 92, 88, 80] : [50, 55, 45, 60, 40];
+    const performanceData = isBest ? [35000, 45000, 30000, 27800, 40000] : [9000,10000, 11000, 15000, 20000];
     
-    const backgroundColor = isBest ? 'rgba(75, 192, 192, 0.5)' : 'rgba(255, 99, 132, 0.5)';
+    const backgroundColor = isBest ? '#283c86' : '#DC281E';
     const borderColor = isBest ? 'rgba(75, 192, 192, 1)' : 'rgba(255, 99, 132, 1)';
    
   
@@ -394,21 +441,21 @@ export class ReportsComponent implements AfterViewInit {
         {
           label: 'Total Customers',
           data: [50, 65, 80, 81, 56, 55, 40],
-          borderColor: 'rgba(75, 192, 192, 1)',
+          borderColor: '#E82264',
           borderWidth: 1,
           fill: false,
         },
         {
           label: 'New Customers',
           data: [20, 35, 40, 51, 46, 45, 30],
-          borderColor: 'rgba(255, 99, 132, 1)',
+          borderColor: '#2D3079',
           borderWidth: 1,
           fill: false,
         },
         {
           label: 'High Value Customers',
           data: [10, 15, 20, 25, 30, 35, 40],
-          borderColor: 'rgba(255, 206, 86, 1)',
+          borderColor: '#42B6CA',
           borderWidth: 1,
           fill: false,
         },
@@ -416,6 +463,7 @@ export class ReportsComponent implements AfterViewInit {
     };
 
     const options = {
+      
       scales: {
         x: {
           beginAtZero: true,
@@ -429,33 +477,37 @@ export class ReportsComponent implements AfterViewInit {
     new Chart(ctx, {
       type: 'line',
       data: data,
+       
       options: options,
     });
+    
   }
 
-  renderDoughnutChart() {
-    const canvas = document.getElementById('serviceSalesDoughnutChart') as HTMLCanvasElement;
-    const ctx = canvas.getContext('2d');
+  // renderDoughnutChart() {
+  //   const canvas = document.getElementById('serviceSalesDoughnutChart') as HTMLCanvasElement;
+  //   const ctx = canvas.getContext('2d');
 
-    if (ctx) {
-      const chartConfig: ChartConfiguration<'doughnut'> = {
-        type: 'doughnut',
-        data: {
-          labels: this.topServiceSalesData.map(data => data.service),
-          datasets: [
-            {
-              data: this.topServiceSalesData.map(data => data.sales),
-              backgroundColor: ['rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)', 'rgba(255, 206, 86, 0.7)',
-                                 'rgba(75, 192, 192, 0.7)', 'rgba(153, 102, 255, 0.7)'],
-            }
-          ]
-        },
-        options: {} // Customize options as needed
-      };
+  //   if (ctx) {
+  //     const serviceLabels = ['Hair Services', 'Nail Services', 'Skin Care Services', 'Eyelash and Eyebrow Services', 'Makeup Services'];
 
-      new Chart(ctx, chartConfig);
-    }
-  }
+  //     const chartConfig: ChartConfiguration<'doughnut'> = {
+  //       type: 'doughnut',
+  //       data: {
+  //         labels: this.topServiceSalesData.map(data => data.service),
+  //         datasets: [
+  //           {
+  //             data: this.topServiceSalesData.map(data => data.sales),
+  //             backgroundColor: ['rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)', 'rgba(255, 206, 86, 0.7)',
+  //                                'rgba(75, 192, 192, 0.7)', 'rgba(153, 102, 255, 0.7)'],
+  //           }
+  //         ]
+  //       },
+  //       options: {} // Customize options as needed
+  //     };
+
+  //     new Chart(ctx, chartConfig);
+  //   }
+  // }
 
   
   
@@ -588,7 +640,32 @@ export class ReportsComponent implements AfterViewInit {
   //     data: data,
   //   });
   // }
-
+  renderDoughnutChart() {
+    const canvas = document.getElementById('serviceSalesDoughnutChart') as HTMLCanvasElement;
+    const ctx = canvas.getContext('2d');
+  
+    if (ctx) {
+      const serviceLabels = ['Hair Services', 'Nail Services', 'Skin Care Services', 'Eyelash and Eyebrow Services', 'Makeup Services'];
+  
+      const chartConfig: ChartConfiguration<'doughnut'> = {
+        type: 'doughnut',
+        data: {
+          labels: serviceLabels,
+          datasets: [
+            {
+              data: this.topServiceSalesData.map(data => data.sales),
+              backgroundColor: ['#f12711', '#1fcf22', '#E82264',
+                                 '#2D3079', '#42B6CA'],
+            }
+          ]
+        },
+        options: {} // Customize options as needed
+      };
+  
+      new Chart(ctx, chartConfig);
+    }
+  }
+  
 
 
 

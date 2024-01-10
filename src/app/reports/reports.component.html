@@ -21,20 +21,38 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class=" col-md-3" style="display:flex ;border-right-style: inset;" *ngIf="showCustomeDate">
-                <mat-form-field>
-                    <mat-label>Enter a date range</mat-label>
-                    <mat-date-range-input [rangePicker]="picker">
-                        <input matStartDate placeholder="Start date" [(ngModel)]="startDate">
-                        <input matEndDate placeholder="End date" [(ngModel)]="endDate"
-                            (dateChange)="customeDateRage($event)">
-                    </mat-date-range-input>
-                    <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-date-range-picker #picker></mat-date-range-picker>
-                </mat-form-field>
-
-            </div>
+            <div class=" col-md-4" style="display:flex ;border-right-style: inset;" *ngIf="showCustomeDate">
+                <div class="card" >
+                    
+                        
+                          
+                                <mat-form-field >
+                              
+                                    <mat-label >Enter a date range</mat-label>
+                                    
+                                        <mat-date-range-input [rangePicker]="picker">
+        
+                                         
+                                            <input matStartDate placeholder="Start date" [(ngModel)]="startDate">
+                                       
+                                        
+                                            <input matEndDate placeholder="End date" [(ngModel)]="endDate"
+                                            (dateChange)="customeDateRage($event)">
+                                        
+                                      
+                                    </mat-date-range-input>
+                                    
+                           
+                                    <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
+                                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-date-range-picker #picker></mat-date-range-picker>
+                                </mat-form-field>
+                          
+                          
+                        
+                    
+                </div>
+             </div>
             <div class=" col-md-4" style="display:flex ;border-right-style: inset;" hidden>
                 <mat-form-field appearance="outline" style="width: -webkit-fill-available;">
                     <mat-label>Custom Range</mat-label>
@@ -49,52 +67,51 @@
         </div>
     </div>
     <!--first row card content-->
-    <div class="card" style="padding: 10px;">
-        <div class="row">
-            
-                <div class="col-md-4">
-                    <mat-card  style="padding: 60px; height:70px; font-size: medium; background-color: darkcyan; color: white; border-radius:15px;">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Total Revenue</label>
+    <div class="container-fluid">
+        <div class="card" style="padding: 7px; ">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-3">
+                    <mat-card class="mobile-card" style="background-color:#E82264; color: #fff; height: 100px;">
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="m-3 p-3 font-size-medium">Total Revenue</label>
+                            </div>
+                            <div class="col-6">
+                                <p class="m-3 p-3 font-size-medium">$1,103,240</p>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <p>$1,103,240</p>
-                        </div>
-                    </div>
-                  </mat-card>
+                    </mat-card>
                 </div>
-               
-            
-            <div class="col-md-4">
-                <mat-card  style="padding: 60px;height:70px; font-size: medium; background-color: darkcyan; color:white; border-radius:15px;">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label>Salons Active Today</label>
+    
+                <div class="col-lg-4 col-md-6 mb-3">
+                    <mat-card class="mobile-card" style="height: 100px; color: #fff; background-color:#42B6CA">
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="m-3 p-3 font-size-medium">Salons Active Today</label>
+                            </div>
+                            <div class="col-6">
+                                <p class="m-3 p-3 font-size-medium">31</p>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <p>31</p>
+                    </mat-card>
+                </div>
+    
+                <div class="col-lg-4 col-md-6 mb-3">
+                    <mat-card class="mobile-card" style="height: 100px; color: #fff; background-color:#2D3079">
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="m-3 p-3 font-size-medium">Total Expenses</label>
+                            </div>
+                            <div class="col-6">
+                                <p class="m-3 p-3 font-size-medium">$16,794</p>
+                            </div>
                         </div>
-                    </div>
-                </mat-card>
+                    </mat-card>
+                </div>
             </div>
-
-
-            <div class="col-md-4">
-                <mat-card  style="padding: 60px; height:70px; font-size: medium; background-color: darkcyan; color:white ; border-radius:15px;">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label >Total Expenses</label>
-                        </div>
-                        <div class="col-md-6">
-                            <p>$16,794</p>
-                        </div>
-                    </div>
-                </mat-card>
-            </div>
-            
         </div>
-    </div>
+    </div>  
+    
     <!--second row card content-->
 
 
@@ -116,38 +133,19 @@
 
 
                     <div>
-                            <div class="card">
-                                 <!-- <select [(ngModel)]="selectedType" (click)="updateChart()" (ngModelChange)="updateChart()" [ngClass]="{'best-performing': selectedType === 'best', 'least-performing': selectedType === 'least'}">
-                                     <option value="best">Best Performing Salons </option>
-                                     
-                                   
-                                     <option value="least">Least Performing Salons</option>
-                                     
-                                 </select> -->
-                                 <!-- <mat-form-field appearance="outline" style="width: -webkit-fill-available;">
-                                    <!-- <mat-label>Select Date</mat-label> -->
-                                    <!-- <mat-select (selectionChange)="selectDate()" id="best" [(ngModel)]="selectedDate">
-                                        <mat-option *ngFor="let best of  performing" [value]="best.id"
-                                            [disabled]="selectedCategory==4 && (best.name=='best performing salons' || best.name=='least performing salons' ) "><span>{{best.name}}</span></mat-option>
-                                    </mat-select>
-                                </mat-form-field> --> 
+                            <div class="card" >
                                 <div class="card custom-card">
                                     <div class="row">
-
                                         <div class="col-md-9">
-                                            <mat-form-field appearance="outline" style="width: -webkit-fill-available;">
-                                            
-                                                <mat-select [(ngModel)]="selectedType" (click)="updateChart()" (ngModelChange)="updateChart()"
-                                                    [ngClass]="{'best-performing': selectedType === 'best', 'least-performing': selectedType === 'least'}">
-                                                    <mat-option value="best">Best Performing Salons</mat-option>
-                                                    <mat-option value="least">Least Performing Salons</mat-option>
-                                                </mat-select>
-                                            </mat-form-field>
+                                            <select style="height: 50px; width:100%;" [(ngModel)]="selectedType" (click)="updateChart()" (ngModelChange)="updateChart()" [ngClass]="{'best-performing': selectedType === 'best', 'least-performing': selectedType === 'least'}">
+                                                <option value="best">Best Performing Salons</option>
+                                                <option value="least">Least Performing Salons</option>
+                                            </select>
                                         </div>
+                                
                                         <div class="col-md-3">
-                                            <button mat-button class="custom-button"  routerLink="/viewdashboarddetails">View all</button>
+                                            <button style="height: 50px; width:100%;" class="custom-button" routerLink="/viewdashboarddetails">View all</button>
                                         </div>
-                                          
                                     </div>
                                 </div>
                                 
@@ -163,59 +161,127 @@
                     </div>
             </div>
                     <!--secondbarchart-->
-                   
-                       <div class="col-lg-4">
-                        <div class="card">
+                    <!-- <div class="col-lg-4">
+                    <div class="card custom-card">
+                        <!-- <div class="card" style="height: 70px; margin-top: 10px;">
+                            <p style="padding: 5px; font-size: 18px; margin-top: 17px; text-align: center; color:red; font-family: 'Arial', sans-serif;">⁠Customers View</p>
+                        </div> -->
+                        <!-- <div class="card" style="height: 70px; margin-top: 10px;">
+                            <p style=" font-size: 24px; margin-top: 17px; text-align: center; color: red; font-family: 'Cursive', sans-serif;">⁠Customer Insight</p>
                             <div>
-                                <canvas #customersChart width="250" height="290px"></canvas>
+                                <button  class="custom-button" routerLink="/viewdashboarddetails">View all</button>
+                            </div>
+                        </div>
+                        
+                       
+                       
+                            <div>
+                                <canvas #customersChart width="250" height="270px"></canvas>
                               </div>
+                         </div>
+                    </div> --> 
+              <div class="col-lg-4">
+                        
+            <div class="card">
+                            <div class="card custom-card1">
+                                <div class="row">
+                                    <div  class= "col-md-8">
+                                        <p style=" height: 50px; width:100%; font-size: 24px;  text-align: center; color: red; font-family: 'Cursive', sans-serif;">⁠Customer Insight</p>
+                                    </div>   
+                                    <div class="col-md-4">
+                                        <button style="height: 35px; width:100%; " class="custom-button" routerLink="/viewdashboarddetails">View all</button>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        
+                             <div>
+                                <canvas #customersChart width="250px" height="270px"></canvas>
+                             </div>
+                        
                         </div>
-                    </div>     
-                </div>
-
-
-                    <!-- third  bar chart
-                    <div class="col-lg-4" >
-                        <div class="card">
-                        <div>
-                            <canvas #salesChart width="400" height="500"></canvas>
-                          </div>
-                        </div>
-                    </div> -->
-
-
                     
-                    </div>
-               </div>
+                 </div>       
+
+                        <div class="col-lg-4">
+                        
+                            <div class="card">
+                                <div class="card custom-card1">
+                                    <div class="row">
+                                        <div  class= "col-md-8">
+                                            <p style=" height: 50px; width:100%; font-size: 24px;  text-align: center; color: red; font-family: 'Cursive', sans-serif;">⁠Appointment Insight</p>
+                                        </div>   
+                                        <div class="col-md-4">
+                                            <button style="height: 35px; width:100%; " class="custom-button" routerLink="/viewdashboarddetails">View all</button>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                            
+                                 <div>
+                                    <canvas #appointmentsChart width="400" height="550"></canvas>
+                                 </div>
+                            </div>
+                        </div>
+                            
+                                
+                          
+                            
+                     
+                    
+
+     </div>
+    </div>
        
     
        <!--second row-->
        <div class="container">
             <div class="card">
                 <div class="row">
+
+
                    <div class="col-lg-4">
                       <div class="card">
                         <!-- stylist-performance.component.html -->
-                        <div class="card" style="height: 70px; margin-top: 10px;">
-                            <p style="padding: 5px; font-size: 18px; margin-top: 17px; text-align: center; color:red;">Top 5 Service Categories</p>
-                        </div>
+                        <div class="card custom-card1">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <p  style=" height: 50px; width:100%; font-size: 24px;  text-align: center; color: red; font-family: 'Cursive', sans-serif;">Top 5 Service Categories</p>
+                                   </div>
+                               
+                                   <div class="col-md-4">
+                                    <button style="height: 35px; width:100%; " class="custom-button" routerLink="/viewdashboarddetails">View all</button>
+                                    </div>
+                                </div>
+                            </div>
+                           
                         <div>
                             <canvas id="serviceSalesDoughnutChart" width="400" height="550"></canvas>
                         </div>
   
                          
-                      </div>
+                    </div>
                   </div>
 
                   <div class="col-lg-4">
                     
                     <div class="card">
-                        <div class="card" style="height: 70px; margin-top: 10px;">
-                            <p style="padding: 5px; font-size: 18px; margin-top: 17px; text-align: center; color:red;">Top 5 Stylish performance</p>
+                        <div class="card custom-card1">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <p  style="font-size: 24px; text-align: center; color: red; font-family: 'Pacifico', sans-serif;">Top 5 Stylist performance</p>
+                                </div>
+                                <div class="col-lg-4">
+                                    
+                                    <button style="height: 35px; width:100%; " class="custom-button" routerLink="/viewdashboarddetails">View all</button>
+                                </div>
+                            </div>
                         </div>
-                       <div>
-                        <canvas id="stylistPerformanceChart" width="600" height="570"></canvas>
+
+                        <div>
+                            <canvas id="stylistPerformanceChart" width="600" height="570"></canvas>
                         </div>
+                        
                     </div>
                 </div>
             
@@ -223,23 +289,39 @@
         
        
            
-                <div class="col-lg-4"  >
+                <div class="col-lg-4" >
                     <div class="card">
-                        <div class="card" style="height: 70px; margin-top: 10px;">
-                            <p style="padding: 5px; font-size: 18px; margin-top: 17px; text-align: center; color:red;">Top 5 Product Sale</p>
+
+                        <div class="card custom-card1">
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <p style=" font-size: 24px;  text-align: center; color: red; font-family: 'Pacifico', sans-serif;">Top 5 Product Sale</p>
+
+                                </div>
+                                <div class="col-lg-4">
+                                    <button style="height: 35px; width:100%; " class="custom-button" routerLink="/viewdashboarddetails">View all</button>
+                               
+                                </div>
+                            </div>
                         </div>
+
+                        
+                        
                        
                         <div>
                             <canvas id="productSalesChart" width="400" height="550"></canvas>
                         </div>
                             
-  
-                          
-                          
-                          
-                          
-                    </div>
+                                     
                 </div>
+            </div>
+
+                 
+            
+            
+        
+                          
+             
 
 
 
